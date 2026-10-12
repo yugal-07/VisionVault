@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo Detective</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="bar">
+    <h1>Photo Detective</h1>
+    <nav class="tabs" role="tablist" aria-label="Main sections">
+      <button class="tab is-active" role="tab" id="btn-upload"  data-tab="upload"  aria-selected="true"  aria-controls="tab-upload">Upload photos</button>
+      <button class="tab"           role="tab" id="btn-scan"    data-tab="scan"    aria-selected="false" aria-controls="tab-scan">Scan your face</button>
+      <button class="tab"           role="tab" id="btn-results" data-tab="results" aria-selected="false" aria-controls="tab-results">Your photos <span id="resultBadge" class="badge" hidden>0</span></button>
+    </nav>
+  </header>
+
+  <p id="status" class="status" role="status" aria-live="polite" hidden></p>
+
+  <main>
+
+    <!-- ============ TAB 1 : UPLOAD ============ -->
+    <section id="tab-upload" class="panel" role="tabpanel" aria-labelledby="btn-upload">
+      <h2>Add photos to the collection</h2>
+      <p class="hint">Photos stay on this computer. Only add photos of people who agreed to it.</p>
+
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose photos or drop them here">
+        <p class="dz-title">Drop photos here</p>
+        <p class="dz-sub">or click to choose them from your computer</p>
+        <input id="fileInput" type="file" accept="image/*" multiple hidden>
+      </div>
+
+      <div id="selection" class="selection" hidden>
+        <p id="selectionText"></p>
+        <div id="previewStrip" class="strip" aria-hidden="true"></div>
+        <div class="row">
+          <button id="uploadBtn" class="btn btn-primary">Upload photos</button>
+          <button id="clearBtn" class="btn btn-ghost">Clear selection</button>
+        </div>
+      </div>
+
+      <div id="uploadProgress" class="progress-wrap" hidden>
+        <label for="uploadBar">Uploading</label>
+        <progress id="uploadBar" value="0" max="100"></progress>
+        <span id="uploadText" class="progress-text"></span>
+      </div>
+
+      <hr>
+
+      <h2>Find the faces in the collection</h2>
+      <p class="hint">Run this after uploading. The detective reads every new photo and remembers each face.</p>
+      <div class="row">
+        <button id="indexBtn" class="btn btn-primary">Start indexing</button>
+      </div>
+
+      <div id="indexProgress" class="progress-wrap" hidden>
+        <label for="indexBar">Indexing</label>
+        <progress id="indexBar" value="0" max="100"></progress>
+        <span id="indexText" class="progress-text"></span>
+      </div>
+    </section>
+
+    <!-- ============ TAB 2 : SCAN ============ -->
+    <section id="tab-scan" class="panel" role="tabpanel" aria-labelledby="btn-scan" hidden>
+      <h2>Show your face</h2>
+      <p class="hint">Look straight at the camera in good light. Take off sunglasses or a hat for the best match.</p>
+
+      <div class="scan-grid">
+        <div class="viewfinder" id="viewfinder">
+          <video id="video" autoplay playsinline muted></video>
+          <img id="selfiePreview" alt="Your captured photo" hidden>
+          <div class="frame-guide" aria-hidden="true"></div>
+          <p id="camPlaceholder" class="cam-placeholder">Camera is off</p>
+        </div>
+
+        <div class="scan-actions">
+          <button id="camStartBtn"   class="btn btn-primary">Turn on camera</button>
+          <button id="captureBtn"    class="btn btn-primary" hidden>Take photo</button>
+          <button id="retakeBtn"     class="btn btn-ghost"   hidden>Retake</button>
+          <button id="searchBtn"     class="btn btn-accent"  hidden>Find my photos</button>
+
+          <p class="or">No webcam? Use a photo instead.</p>
+          <label class="btn btn-ghost file-btn">
+            Choose a selfie
+            <input id="selfieInput" type="file" accept="image/*" hidden>
+          </label>
+        </div>
+      </div>
+      <canvas id="canvas" hidden></canvas>
+    </section>
+
+    <!-- ============ TAB 3 : RESULTS ============ -->
+    <section id="tab-results" class="panel" role="tabpanel" aria-labelledby="btn-results" hidden>
+      <h2 id="resultsTitle">Your photos</h2>
+      <p id="resultsEmpty" class="empty">No results yet. Scan your face to search the collection.</p>
+      <div id="gallery" class="gallery"></div>
+    </section>
+
+  </main>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <dialog id="lightbox" class="lightbox" aria-label="Photo viewer">
+    <button id="lbClose" class="lb-close" aria-label="Close">Close</button>
+    <button id="lbPrev"  class="lb-nav lb-prev" aria-label="Previous photo">&#8249;</button>
+    <figure>
+      <img id="lbImg" alt="">
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button id="lbNext"  class="lb-nav lb-next" aria-label="Next photo">&#8250;</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
