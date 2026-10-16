@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Photo Detective</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <header class="bar">
     <h1>Photo Detective</h1>
     <nav class="tabs" role="tablist" aria-label="Main sections">
-      <button class="tab is-active" role="tab" id="btn-upload"  data-tab="upload"  aria-selected="true"  aria-controls="tab-upload">Upload photos</button>
-      <button class="tab"           role="tab" id="btn-scan"    data-tab="scan"    aria-selected="false" aria-controls="tab-scan">Scan your face</button>
-      <button class="tab"           role="tab" id="btn-results" data-tab="results" aria-selected="false" aria-controls="tab-results">Your photos <span id="resultBadge" class="badge" hidden>0</span></button>
+      <button class="tab is-active" role="tab" id="btn-upload" data-tab="upload" aria-selected="true"
+        aria-controls="tab-upload">Upload photos</button>
+      <button class="tab" role="tab" id="btn-scan" data-tab="scan" aria-selected="false" aria-controls="tab-scan">Scan
+        your face</button>
+      <button class="tab" role="tab" id="btn-results" data-tab="results" aria-selected="false"
+        aria-controls="tab-results">Your photos <span id="resultBadge" class="badge" hidden>0</span></button>
     </nav>
   </header>
 
@@ -79,10 +86,10 @@
         </div>
 
         <div class="scan-actions">
-          <button id="camStartBtn"   class="btn btn-primary">Turn on camera</button>
-          <button id="captureBtn"    class="btn btn-primary" hidden>Take photo</button>
-          <button id="retakeBtn"     class="btn btn-ghost"   hidden>Retake</button>
-          <button id="searchBtn"     class="btn btn-accent"  hidden>Find my photos</button>
+          <button id="camStartBtn" class="btn btn-primary">Turn on camera</button>
+          <button id="captureBtn" class="btn btn-primary" hidden>Take photo</button>
+          <button id="retakeBtn" class="btn btn-ghost" hidden>Retake</button>
+          <button id="searchBtn" class="btn btn-accent" hidden>Find my photos</button>
 
           <p class="or">No webcam? Use a photo instead.</p>
           <label class="btn btn-ghost file-btn">
@@ -106,14 +113,15 @@
   <!-- ============ LIGHTBOX ============ -->
   <dialog id="lightbox" class="lightbox" aria-label="Photo viewer">
     <button id="lbClose" class="lb-close" aria-label="Close">Close</button>
-    <button id="lbPrev"  class="lb-nav lb-prev" aria-label="Previous photo">&#8249;</button>
+    <button id="lbPrev" class="lb-nav lb-prev" aria-label="Previous photo">&#8249;</button>
     <figure>
       <img id="lbImg" alt="">
       <figcaption id="lbCaption"></figcaption>
     </figure>
-    <button id="lbNext"  class="lb-nav lb-next" aria-label="Next photo">&#8250;</button>
+    <button id="lbNext" class="lb-nav lb-next" aria-label="Next photo">&#8250;</button>
   </dialog>
 
   <script src="app.js"></script>
 </body>
+
 </html>
