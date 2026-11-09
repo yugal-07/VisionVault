@@ -49,16 +49,6 @@ The frontend communicates with the backend through these endpoints:
 - **ML** — DJL (Deep Java Library) with a pretrained face detection & recognition model
 - **Database** — Stores photo metadata and face embeddings
 
-## Project Structure
-
-```
-VisionVault/
-├── Frontend/
-│   ├── index.html      # Single-page app shell
-│   ├── style.css       # All styles
-│   └── app.js          # Client-side logic
-└── README.md
-```
 
 ## Privacy
 
