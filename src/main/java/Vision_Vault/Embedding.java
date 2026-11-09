@@ -7,17 +7,17 @@ public class Embedding {
 
   public String getEmbeddings(String name) {
     ///
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
     return emb.get(0);
   }
 }

@@ -1,3 +1,5 @@
+package Vision_Vault;
+
 import javax.swing.*;
 import java.awt.*;
 

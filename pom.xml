@@ -27,9 +27,34 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>27</java.version>
-	</properties>
+    <java.version>21</java.version>
+  </properties>
+
 	<dependencies>
+  <dependency>
+    <groupId>ai.djl</groupId>
+    <artifactId>api</artifactId>
+    <version>0.36.0</version>
+  </dependency>
+  <!-- for RetinaFace detection from the model zoo -->
+  <dependency>
+    <groupId>ai.djl.pytorch</groupId>
+    <artifactId>pytorch-engine</artifactId>
+    <version>0.36.0</version>
+    <scope>runtime</scope>
+  </dependency>
+  <dependency>
+    <groupId>ai.djl.pytorch</groupId>
+    <artifactId>pytorch-model-zoo</artifactId>
+    <version>0.36.0</version>
+  </dependency>
+  <!-- for the ArcFace .onnx embedding model -->
+  <dependency>
+    <groupId>ai.djl.onnxruntime</groupId>
+    <artifactId>onnxruntime-engine</artifactId>
+    <version>0.36.0</version>
+    <scope>runtime</scope>
+  </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-h2console</artifactId>
@@ -64,6 +89,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>
