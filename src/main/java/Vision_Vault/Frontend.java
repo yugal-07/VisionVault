@@ -1,10 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class VisionVaultMockup {
+public class Frontend {
 
   public static void main(String[] args) {
-    SwingUtilities.invokeLater(VisionVaultMockup::buildWindow);
+    SwingUtilities.invokeLater(Frontend::buildWindow);
   }
 
   static void buildWindow() {
