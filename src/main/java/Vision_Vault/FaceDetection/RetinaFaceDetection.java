@@ -9,6 +9,8 @@ import ai.djl.repository.zoo.Criteria;
 import ai.djl.repository.zoo.ZooModel;
 import ai.djl.training.util.ProgressBar;
 import ai.djl.translate.TranslateException;
+import ai.djl.modality.cv.output.BoundingBox;
+import ai.djl.modality.cv.output.DetectedObjects.DetectedObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +29,24 @@ public final class RetinaFaceDetection {
 
   public static void main(String[] args) throws IOException, ModelException, TranslateException {
     DetectedObjects detection = RetinaFaceDetection.predict();
-    logger.info("{}", detection);
+    logger.info("{}", giveBoundingBox(detection));
   }
 
+  ///
+  /// get BoundingBox
+  public static BoundingBox giveBoundingBox(DetectedObjects detection) {
+    BoundingBox b = null;
+    for (int i = 0; i < detection.getNumberOfObjects(); i++) {
+      DetectedObject obj = detection.item(i); // or: detections.<DetectedObject>item(i)
+      b = obj.getBoundingBox();
+    }
+    return b;
+  }
+  ///
+  ///
+
   public static DetectedObjects predict() throws IOException, ModelException, TranslateException {
-    Path facePath = Paths.get("Path to img");
+    Path facePath = Paths.get("/home/yugal/Downloads/pasted-image-1794229337621.png");
     Image img = ImageFactory.getInstance().fromFile(facePath);
 
     double confThresh = 0.85f;
